@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>反馈管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" th:href="@{/layuimini/lib/layui-v2.5.5/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/layuimini/css/public.css}" media="all">
+    <link rel="stylesheet" th:href="@{/layuimini/js/lay-module/dtree/dtree.css}">
+    <link rel="stylesheet" th:href="@{/layuimini/js/lay-module/dtree/font/dtreefont.css}">
+
+</head>
+<body>
+<div class="layuimini-container">
+    <div class="layuimini-main">
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs" lay-event="detail">详情</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="del">推送处理</a>
+        </script>
+
+    </div>
+</div>
+
+<div id="detailFormModal" style="display: none;padding: 10px">
+    <form class="layui-form" id="detailForm" lay-filter="detailFormFilter">
+        <div class="layui-form-item">
+            <label class="layui-form-label">问题类型</label>
+            <div class="layui-input-block">
+                <input type="text" name="feedbackType" readonly class="layui-input layui-input-view" style="border: none">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">问题描述</label>
+            <div class="layui-input-block">
+                <input type="text" name="feedbackDescription" readonly class="layui-input layui-input-view" style="border: none">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">时间</label>
+            <div class="layui-input-block">
+                <input type="text" name="feedbackTime" readonly class="layui-input layui-input-view" style="border: none">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-primary" id="detailFormReset">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--xml-select 解决layui多选的解决方案(从后端拿数据)-->
+<script th:src="@{/layuimini/js/lay-module/xm-select/xm-select.js}"></script>
+<script th:src="@{/layuimini/lib/layui-v2.5.5/layui.js}" charset="utf-8"></script>
+<script th:src="@{/layuimini/js/lay-config.js?v=2.0.0}" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'table','dtree'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            dtree = layui.dtree;
+
+        table.render({
+            elem: '#currentTableId',
+            method: 'post',
+            url: '/system/feedbackInfo/listByTable',
+            toolbar: '#toolbar',
+            defaultToolbar: ['filter', 'exports', 'print'],
+            cols: [ [
+                {type: "checkbox", width: 50},
+                {type: 'numbers',title: '序号'},
+                {field: 'feedbackType', title: '问题类型'},
+                {field: 'feedbackTime',title: '时间'},
+                {field: 'feedbackDescription', title: '描述问题'},
+                {title: '操作', width: 180,align:"center", toolbar: '#currentTableBar', align: "center"}
+            ]],
+            limits: [10, 15, 20],
+            limit: 10,
+            page: true,
+        });
+
+        /**
+         * 详情、编辑、删除
+         */
+        table.on('tool(currentTableFilter)',function (obj) {
+            let data = obj.data;
+            if(obj.event === 'detail'){
+                form.val('detailFormFilter',data);
+                layer.open({
+                    title: '详细信息',
+                    type: 1,
+                    content: $('#detailFormModal'),
+                    area: ['1000px','350px'],
+                    maxmin: true
+                });
+            }else if(obj.event === 'del'){
+                layer.confirm('确定加急处理吗?',function (index) {
+                    $.ajax({
+                        type: 'post',
+                        url: '/system/feedbackInfo/RemoveById',
+                        data: {id: data.id},
+                        dataType: 'json',
+                        success: function (res) {
+                            if(res.code == 200){
+                                layer.msg(res.msg, {time: 500, icon: 1}, function () {
+                                    window.location.reload();
+                                });
+                            }
+                            else{
+                                layer.msg(res.msg, {time: 500, icon: 2});
+                            }
+                        },
+                        error: function (res){
+                            layer.msg('请求失败',{time: 500, icon: 2});
+                        }
+                    });
+                });
+            }
+        });
+
+        // 监听 add表单 关闭
+        $('#dataFormReset').on('click', function () {
+            active.closeDataFormModal();
+        });
+
+        // 监听 detail表单 关闭
+        $('#detailFormReset').on('click', function () {
+            $('#detailForm')[0].reset();
+            layer.closeAll();
+        });
+
+    });
+</script>
+
+</body>
+</html>

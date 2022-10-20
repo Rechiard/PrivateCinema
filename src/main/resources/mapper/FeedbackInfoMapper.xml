@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tjnu.system.mapper.FeedbackInfoMapper">
+
+    <select id="countByTable" resultType="java.lang.Integer">
+        select count(A.id) from feedback_info A where A.status = 1
+    </select>
+
+    <select id="listByTable" resultType="com.tjnu.system.entity.FeedbackInfo">
+        select <include refid="FeedbackInfoVo"/>
+        from feedback_info A
+        where A.status = 1
+        limit #{entity.offset}, #{entity.limit}
+    </select>
+
+    <sql id="FeedbackInfoVo">
+        A.id,
+        A.feedback_type,
+        A.feedback_description,
+        A.feedback_time
+    </sql>
+
+
+
+
+</mapper>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tjnu.system.mapper.AppointmentInfoMapper">
+
+
+    <select id="countAppointmentRepeat" resultType="java.lang.Integer">
+        select count(A.id) from appointment_info A
+        where A.status=1
+          and A.process = 1
+          and A.user_id = #{entity.userId}
+          and A.room_id = #{entity.roomId}
+          and A.start_time = #{entity.startTime}
+    </select>
+
+    <select id="countRoomRepeat" resultType="java.lang.Integer">
+        select count(A.id) from appointment_info A
+        where A.status=1
+          and A.process = 1
+          and A.room_id = #{entity.roomId}
+          and A.start_time = #{entity.startTime}
+    </select>
+
+    <select id="countById" resultType="java.lang.Integer">
+        select count(A.id) from appointment_info A where A.status = 1 and A.user_id = #{entity.userId}
+    </select>
+
+    <select id="listByTable" resultType="com.tjnu.system.vo.AppointmentInfoVo">
+        select <include refid="AppointmentInfoVoByUserId"/>
+        from appointment_info A
+            LEFT JOIN movie_info B on B.id = A.movie_id
+            LEFT JOIN room_info C on C.id = A.room_id
+        where A.status = 1 and A.user_id = #{entity.userId}
+        limit #{entity.offset}, #{entity.limit}
+    </select>
+
+    <select id="countAll" resultType="java.lang.Integer">
+        select count(A.id) from appointment_info A where A.status = 1 and A.process != 3
+    </select>
+
+    <select id="listAll" resultType="com.tjnu.system.vo.AppointmentInfoVo">
+        select <include refid="AppointmentInfoVoByUserId2"/>
+        from appointment_info A
+        LEFT JOIN movie_info B on B.id = A.movie_id
+        LEFT JOIN room_info C on C.id = A.room_id
+        LEFT JOIN user_info D on D.id = A.user_id
+        where A.status = 1 and A.process != 3
+        limit #{entity.offset}, #{entity.limit}
+    </select>
+
+    <select id="countAll2" resultType="java.lang.Integer">
+        select count(A.id) from appointment_info A where A.status = 1 and A.process = 3
+    </select>
+
+    <select id="listAll2" resultType="com.tjnu.system.vo.AppointmentInfoVo">
+        select <include refid="AppointmentInfoVoByUserId2"/>
+        from appointment_info A
+        LEFT JOIN movie_info B on B.id = A.movie_id
+        LEFT JOIN room_info C on C.id = A.room_id
+        LEFT JOIN user_info D on D.id = A.user_id
+        where A.status = 1 and A.process = 3
+        limit #{entity.offset}, #{entity.limit}
+    </select>
+
+    <update id="updateProcessTwo">
+        update appointment_info A
+        set A.process = 2
+        where A.status = 1 and A.id = #{id}
+    </update>
+
+    <update id="updateProcessThree">
+        update appointment_info A
+        set A.process = 3
+        where A.status = 1 and A.id = #{id}
+    </update>
+
+    <select id="TotalMoney" resultType="java.lang.Integer">
+        select sum(B.room_price)
+        from appointment_info A LEFT JOIN room_info B on A.room_id = B.id
+        where A.status = 1 and A.process = 3
+    </select>
+
+    <select id="TotalAppointment" resultType="java.lang.Integer">
+        select count(A.id)
+        from appointment_info A
+        where A.status = 1 and A.process = 3
+    </select>
+
+    <select id="TotalProcessingAppointment" resultType="java.lang.Integer">
+        select count(A.id)
+        from appointment_info A
+        where A.status = 1 and A.process != 3
+    </select>
+
+    <sql id="AppointmentInfoVo">
+        A.id,
+        A.user_id,
+        A.movie_id,
+        A.room_id,
+        A.start_time,
+        A.end_time,
+        A.process
+    </sql>
+
+    <sql id="AppointmentInfoVoByUserId">
+        A.id,
+        A.start_time,
+        A.end_time,
+        A.process,
+        B.movie_name,
+        C.room_name,
+        C.room_price,
+        C.room_type,
+        C.room_number
+    </sql>
+
+    <sql id="AppointmentInfoVoByUserId2">
+        A.id,
+        A.start_time,
+        A.end_time,
+        A.process,
+        B.movie_name,
+        C.room_name,
+        C.room_price,
+        C.room_type,
+        C.room_number,
+        D.nickname
+    </sql>
+
+</mapper>

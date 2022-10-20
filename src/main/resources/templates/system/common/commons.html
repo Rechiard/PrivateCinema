@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="topBar">
+
+    <!-- preloader -->
+    <div id="preloader">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <img src="img/preloader.svg" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- preloader-end -->
+
+    <!-- Scroll-top -->
+    <button class="scroll-top scroll-to-target" data-target="html">
+        <i class="fas fa-angle-up"></i>
+    </button>
+    <!-- Scroll-top-end-->
+
+    <!-- header-area -->
+    <header class="header-style-two">
+        <div class="header-top-wrap">
+            <div class="container custom-container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 d-none d-md-block">
+                        <div class="header-top-subs">
+                            <p>所有版权归 <span>个人所有</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="header-top-link">
+                            <ul class="quick-link">
+                                <li th:if="${userInfo != null}">
+                                    您好，[[${userInfo.getNickname()}]]
+                                </li>
+                                <li th:if="${admin == 2}"><a th:href="@{/toBackIndex}">查看后台</a></li>
+                                <li style="margin-right: 15px" th:if="${userInfo != null}"><a th:href="@{/LoginOut}">注销</a></li>
+
+                                <li th:if="${userInfo == null}"><a th:href="@{/toLogin}">登录</a></li>
+                                <li style="margin-right: 20px" th:if="${userInfo == null}"><a th:href="@{/toRegister}">注册</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sticky-header" class="menu-area">
+            <div class="container custom-container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mobile-nav-toggler"><i class="fas fa-bars"></i></div>
+                        <div class="menu-wrap">
+                            <nav class="menu-nav show">
+                                <div class="logo">
+                                    <a href="index.html">
+                                        <img src="img/logo/logo.png" alt="Logo">
+                                    </a>
+                                </div>
+                                <div class="navbar-wrap main-menu d-none d-lg-flex" style="margin-right: 180px;">
+                                    <ul class="navigation">
+                                        <li class=" menu-item-has-children" style="margin-right: 46px;"><a th:href="@{/toIndex}">首页</a></li>
+                                        <li class="menu-item-has-children" style="margin-right: 46px;"><a th:href="@{/toMovieList}">电影</a></li>
+                                        <li th:if="${userInfo != null}"><a th:href="@{/toMyAccount}" style="margin-right: 26px;">个人中心</a></li>
+                                        <li><a th:href="@{/toFeedback}" >反馈与意见</a></li>
+                                    </ul>
+                                </div>
+                                <div class="header-action d-none d-md-block">
+                                    <ul>
+                                        <li class="d-none d-xl-block">
+                                            <div class="footer-search">
+                                                <form action="#">
+                                                    <input type="text" placeholder="搜索你喜欢的电影">
+                                                    <button><i class="fas fa-search"></i></button>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+
+                        <!-- Mobile Menu  -->
+                        <div class="mobile-menu">
+                            <div class="close-btn"><i class="fas fa-times"></i></div>
+
+                            <nav class="menu-box">
+                                <div class="nav-logo"><a href="index.html"><img src="img/logo/logo.png" alt="" title=""></a>
+                                </div>
+                                <div class="menu-outer">
+                                    <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                                </div>
+                                <div class="social-links">
+                                    <ul class="clearfix">
+                                        <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                                        <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
+                                        <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
+                                        <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                                        <li><a href="#"><span class="fab fa-youtube"></span></a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="menu-backdrop"></div>
+                        <!-- End Mobile Menu -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-area-end -->
+
+</div>
+
+<div th:fragment="bottomBar">
+    <!-- footer-area -->
+    <footer>
+        <div class="footer-top-wrap">
+            <div class="container">
+                <div class="footer-menu-wrap">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="img/logo/logo.png" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="footer-menu">
+                                <nav>
+                                    <div class="footer-search">
+                                        <form action="#">
+                                            <input type="text" placeholder="Find Favorite Movie">
+                                            <button><i class="fas fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2021.Company name All rights reserved.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="payment-method-img text-center text-md-right">
+                            <img src="img/images/card_img.png" alt="img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer-area-end -->
+
+    <!-- JS here -->
+    <script th:src="@{/js/vendor/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/isotope.pkgd.min.js}"></script>
+    <script th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
+    <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/js/jquery.odometer.min.js}"></script>
+    <script th:src="@{/js/jquery.appear.js}"></script>
+    <script th:src="@{/js/slick.min.js}"></script>
+    <script th:src="@{/js/ajax-form.js}"></script>
+    <script th:src="@{/js/wow.min.js}"></script>
+    <script th:src="@{/js/aos.js}"></script>
+    <script th:src="@{/js/plugins.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+
+</div>
+
+
+
+</body>
+</html>

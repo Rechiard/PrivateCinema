@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tjnu.system.mapper.UserInfoMapper">
+
+    <select id="countByTable" resultType="java.lang.Integer">
+        select count(A.id) from user_info A where A.status = 1
+    </select>
+
+    <select id="listByTable" resultType="com.tjnu.system.entity.UserInfo">
+        select <include refid="UserInfoVo"/>
+        from user_info A
+        where A.status = 1
+        limit #{entity.offset}, #{entity.limit}
+    </select>
+
+    <select id="selectOneByPhone" resultType="com.tjnu.system.entity.UserInfo">
+        select <include refid="UserInfoVo"/>
+        from user_info A
+        where A.status = 1 and A.phone = #{phone}
+    </select>
+
+    <select id="countBlack" resultType="java.lang.Integer">
+        select count(A.id) from user_info A where A.status = 3
+    </select>
+
+    <select id="listBlack" resultType="com.tjnu.system.entity.UserInfo">
+        select <include refid="UserInfoVo"/>
+        from user_info A
+        where A.status = 3
+        limit #{entity.offset}, #{entity.limit}
+    </select>
+
+    <update id="JoinBlackById">
+        update user_info A
+        set A.status = 3
+        where A.id = #{id}
+    </update>
+
+    <update id="QuitBlackById">
+        update user_info A
+        set A.status = 1
+        where A.id = #{id}
+    </update>
+
+    <sql id="UserInfoVo">
+        A.id,
+        A.username,
+        A.password,
+        A.salt,
+        A.nickname,
+        A.email,
+        A.phone,
+        A.role,
+        A.register_date
+    </sql>
+
+</mapper>

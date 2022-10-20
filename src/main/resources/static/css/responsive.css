@@ -1,0 +1,817 @@
+/* Extra large devices (large desktops, 1800px and up) */
+@media (max-width: 1800px) {
+    .slider-img > img {
+        margin-right: 0;
+    }
+
+}
+
+
+/* Extra large devices (large desktops, 1800px and up) */
+@media (max-width: 1500px) {
+    .custom-container {
+        max-width: 1330px;
+    }
+
+    .banner-bg {
+        padding: 260px 0 200px;
+        background-position: right center;
+    }
+
+    .live-movie-img img {
+        max-width: 100%;
+    }
+
+    .breadcrumb-bg {
+        padding: 230px 0 170px;
+    }
+
+    .header-style-two::after {
+        display: none;
+    }
+
+    .gallery-area.position-relative {
+        padding: 120px 0 120px;
+        margin-bottom: 0;
+    }
+
+    .gallery-bg {
+        height: 100%;
+    }
+
+    .gallery-area .slider-nav {
+        max-width: 900px;
+        position: unset;
+    }
+
+    .services-bg-two {
+        padding: 120px 0 120px;
+    }
+
+    .slider-bg {
+        padding: 130px 0 130px;
+    }
+
+}
+
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1199.98px) {
+    .custom-container {
+        max-width: 960px;
+    }
+
+    .header-action > ul > li.header-btn {
+        display: none;
+    }
+
+    .navbar-wrap > ul {
+        margin-right: 0;
+    }
+
+    .navbar-wrap > ul > li > a {
+        padding: 38px 20px;
+    }
+
+    .services-list {
+        padding-right: 0;
+    }
+
+    .services-bg .title-style-two {
+        padding-right: 0;
+    }
+
+    .services-img-wrap .download-btn {
+        right: -65px;
+    }
+
+    .live-movie-img {
+        margin-left: 0;
+    }
+
+    .newsletter-inner-wrap {
+        padding: 45px 0px;
+    }
+
+    .footer-menu nav .navigation li {
+        margin-right: 15px;
+    }
+
+    .footer-search form {
+        min-width: 240px;
+    }
+
+    .quick-link-list ul li {
+        margin: 5px 40px 5px 0px;
+    }
+
+    .movie-bg .tr-movie-menu-active button {
+        padding: 10px 18px;
+    }
+
+    .movie-filter-form select {
+        padding: 9px 30px 9px 20px;
+    }
+
+    .banner-content .sub-title {
+        font-size: 24px;
+    }
+
+    .banner-content .title {
+        font-size: 42px;
+    }
+
+    .header-style-two .header-action ul li.header-lang {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .header-style-two .header-action > ul > li {
+        margin-left: 25px;
+    }
+
+    .header-style-two .header-action > ul > li.header-btn {
+        display: block;
+    }
+
+    .gallery-active .slick-slide {
+        margin-top: 30px;
+    }
+
+    .services-bg-two .services-img-wrap .download-btn {
+        display: none;
+    }
+
+    .movie-item-row .custom-col- {
+        -ms-flex: 0 0 33.333%;
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+    }
+
+    .movie-item-row .movie-poster img {
+        width: 100%;
+    }
+
+    .movie-item-row {
+        justify-content: center;
+    }
+
+    .contact-info-wrap {
+        padding: 40px 30px 60px;
+    }
+
+    #map {
+        min-height: 400px;
+    }
+
+    .blog-sidebar {
+        margin-left: 0;
+    }
+
+    .blog-widget {
+        padding: 35px 20px;
+    }
+
+    .rc-post-item .thumb {
+        flex: 0 0 85px;
+        width: 85px;
+        margin-right: 15px;
+    }
+
+    .rc-post-item .thumb img {
+        max-width: 100%;
+    }
+
+    .rc-post-item .content .title {
+        font-size: 13px;
+        line-height: 22px;
+    }
+
+    .movie-details-btn {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .movie-details-btn .download-btn {
+        font-size: 12px;
+        position: unset;
+        bottom: 0;
+        right: 0;
+        transform: unset;
+        padding: 20px 35px;
+        display: inline-block;
+        margin-left: 15px;
+    }
+
+    .movie-details-btn .download-btn img {
+        max-width: 12px;
+        transform: rotate(0deg);
+    }
+
+    .movie-details-img img {
+        max-width: 100%;
+    }
+
+    .movie-details-content h2 {
+        font-size: 54px;
+    }
+
+    .movie-episode-wrap {
+        margin-right: 0;
+    }
+
+    .pricing-box-wrap {
+        padding: 0 0px;
+    }
+
+    .pricing-box-item {
+        padding: 40px 25px 45px;
+    }
+
+    .blog-details-wrap blockquote p {
+        font-size: 18px;
+    }
+
+    .avatar-post {
+        padding: 35px 30px 35px 30px;
+    }
+
+    .blog-comment ul li.comment-reply {
+        margin-left: 25px;
+    }
+
+    .comment-text p {
+        padding-right: 10px;
+    }
+
+}
+
+
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 991.98px) {
+    .custom-container {
+        max-width: 720px;
+    }
+
+    .menu-area {
+        padding: 25px 0;
+    }
+
+    .menu-area.sticky-menu {
+        padding: 20px 0;
+    }
+
+    .menu-nav {
+        justify-content: space-between;
+    }
+
+    .header-action {
+        margin-right: 40px;
+    }
+
+    .menu-outer .navbar-wrap {
+        display: block !important;
+    }
+
+    .menu-area .mobile-nav-toggler {
+        display: block;
+    }
+
+    .banner-bg {
+        padding: 220px 0 160px;
+        background-position: center center;
+    }
+
+    .ucm-nav-wrap {
+        justify-content: center;
+        margin-right: 0;
+        margin-top: 20px;
+    }
+
+    .services-img-wrap {
+        margin-bottom: 50px;
+    }
+
+    .services-img-wrap .download-btn {
+        right: -15px;
+    }
+
+    .services-content-wrap {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .movie-poster img {
+        width: 100%;
+    }
+
+    .live-movie-img {
+        margin-left: 0;
+        margin-top: 50px;
+    }
+
+    .newsletter-content {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .newsletter-inner-wrap {
+        padding: 55px 80px;
+    }
+
+    .footer-logo {
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+    .ucm-nav-wrap .nav-tabs {
+        justify-content: center;
+    }
+
+    .movie-page-meta {
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination-wrap ul,
+    .movie-bg .tr-movie-menu-active {
+        justify-content: center;
+    }
+
+    .slider-img {
+        margin-bottom: 50px;
+    }
+
+    .header-style-two .menu-area,
+    .header-style-two .menu-area.sticky-menu {
+        padding: 20px 0;
+    }
+
+    .title-style-three.text-lg-left::before {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    .services-bg-two .services-img-wrap {
+        text-align: center;
+    }
+
+    .movie-item-row .custom-col- {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .contact-form {
+        margin-bottom: 60px;
+    }
+
+    .contact-area .widget-title {
+        margin-bottom: 35px;
+    }
+
+    .blog-sidebar {
+        margin-top: 120px;
+    }
+
+    .rc-post-item .content .title {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .rc-post-item .thumb {
+        flex: 0 0 100px;
+        width: 100px;
+        margin-right: 20px;
+    }
+
+    .blog-widget {
+        padding: 40px 30px;
+    }
+
+    .movie-details-img {
+        max-width: 303px;
+        margin: 0 auto 50px;
+    }
+
+    .movie-details-content {
+        margin-left: 0;
+    }
+
+    .movie-details-btn {
+        margin-top: 30px;
+    }
+
+    .episode-img {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .movie-history-wrap p {
+        padding: 0 0;
+    }
+
+    .movie-details-content h2 {
+        font-size: 50px;
+    }
+
+    .blog-details-area .contact-form {
+        margin-bottom: 0;
+    }
+
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 767.98px) {
+    .transparent-header {
+        top: 0;
+    }
+
+    .banner-bg {
+        padding: 185px 0 140px;
+    }
+
+    .banner-content .sub-title {
+        font-size: 24px;
+    }
+
+    .banner-content .title {
+        font-size: 36px;
+    }
+
+    .newsletter-inner-wrap {
+        padding: 55px 0px;
+    }
+
+    .section-title .title {
+        font-size: 32px;
+    }
+
+    .services-img-wrap .download-btn {
+        right: -65px;
+        padding: 30px 36px;
+    }
+
+    .services-content-wrap {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .services-list ul li {
+        display: block;
+    }
+
+    .services-list ul li .icon {
+        margin-bottom: 18px;
+    }
+
+    .newsletter-form input {
+        padding: 17px 30px;
+        padding-right: 30px;
+    }
+
+    .newsletter-form button {
+        position: initial;
+        margin-top: 15px;
+    }
+
+    .newsletter-form {
+        text-align: center;
+    }
+
+    .footer-menu nav {
+        display: block;
+    }
+
+    .footer-search form {
+        min-width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .quick-link-list ul li {
+        margin: 5px 30px 5px 0px;
+    }
+
+    .footer-social ul {
+        margin-top: 20px;
+        justify-content: center;
+    }
+
+    .copyright-text {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .scroll-top {
+        right: 15px;
+    }
+
+    .scroll-top.open {
+        bottom: 15px;
+    }
+
+    .footer-menu nav .navigation {
+        justify-content: center;
+    }
+
+    .quick-link-list ul, .footer-social ul {
+        justify-content: center;
+    }
+
+    .breadcrumb-content .title {
+        font-size: 38px;
+        margin-bottom: 10px;
+    }
+
+    .breadcrumb-bg {
+        padding: 170px 0 130px;
+    }
+
+    .header-top-link {
+        justify-content: center;
+    }
+
+    .gallery-item {
+        padding: 0 15px;
+    }
+
+    .gallery-active .slick-slide {
+        margin-top: 0px;
+    }
+
+    .services-bg-two .services-content-wrap {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .movie-item-row .custom-col- {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .contact-form {
+        padding: 30px 20px 40px;
+    }
+
+    .contact-info-wrap {
+        padding: 40px 25px 60px;
+    }
+
+    .blog-post-content {
+        padding: 30px 20px;
+    }
+
+    .blog-post-content .title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .blog-post-meta .read-more {
+        margin-left: auto;
+    }
+
+    .blog-widget {
+        padding: 35px 20px;
+    }
+
+    .rc-post-item .thumb {
+        flex: 0 0 85px;
+        width: 85px;
+        margin-right: 15px;
+    }
+
+    .rc-post-item .thumb img {
+        max-width: 100%;
+    }
+
+    .rc-post-item .content .title {
+        font-size: 13px;
+        line-height: 22px;
+    }
+
+    .movie-details-content h5 {
+        font-size: 20px;
+    }
+
+    .movie-details-content h2 {
+        font-size: 36px;
+    }
+
+    .movie-details-prime ul li.watch {
+        margin-left: 0;
+    }
+
+    .total-views-count {
+        margin-top: 20px;
+    }
+
+    .episode-watch-wrap .card-body ul li a {
+        font-size: 14px;
+        display: flex;
+        align-items: baseline;
+    }
+
+    .episode-watch-wrap .card-body ul li .duration {
+        float: none;
+        display: block;
+        margin-top: 10px;
+        margin-left: 25px;
+    }
+
+    .episode-watch-wrap .card-body ul {
+        padding: 30px 25px 40px;
+    }
+
+    .movie-history-wrap .title {
+        font-size: 22px;
+        padding: 25px 30px;
+    }
+
+    .movie-details-prime ul li.streaming {
+        margin-right: 30px;
+    }
+
+    .blog-details-wrap blockquote {
+        padding: 35px 30px 35px 30px;
+    }
+
+    .blog-details-wrap blockquote > i {
+        float: unset;
+        font-size: 40px;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .blog-details-wrap blockquote p {
+        font-size: 16px;
+        margin-left: 0;
+    }
+
+    .blog-details-wrap blockquote figure {
+        margin-left: 0;
+        margin-bottom: 0;
+        font-size: 12px;
+    }
+
+    .blog-details-wrap blockquote figure > span {
+        font-size: 13px;
+    }
+
+    .blog-details-wrap .blog-post-meta ul li + li {
+        margin-left: 0;
+    }
+
+    .blog-details-wrap .blog-post-meta ul li:first-child {
+        margin-right: 15px;
+    }
+
+    .blog-post-meta {
+        display: block;
+    }
+
+    .blog-post-share {
+        margin-top: 15px;
+    }
+
+    .avatar-post {
+        display: block;
+    }
+
+    .post-avatar-img {
+        margin-bottom: 20px;
+    }
+
+    .blog-comment ul li .single-comment {
+        display: block;
+    }
+
+    .comment-avatar-img {
+        margin-bottom: 15px;
+    }
+
+    .comment-avatar-info h5 {
+        font-size: 16px;
+    }
+
+    .comment-avatar-info h5 span {
+        display: block;
+        font-size: 12px;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .blog-comment ul li {
+        padding: 30px 20px;
+    }
+
+    .comment-text p {
+        padding-right: 0;
+    }
+
+    .blog-comment ul li.comment-reply {
+        margin-left: 0;
+    }
+
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .custom-container {
+        max-width: 540px;
+    }
+
+    .banner-content .title {
+        font-size: 42px;
+    }
+
+    .services-img-wrap .download-btn {
+        right: -64px;
+    }
+
+    .services-list ul li {
+        display: flex;
+    }
+
+    .services-list ul li .icon {
+        margin-bottom: 0;
+    }
+
+    .breadcrumb-content .title {
+        font-size: 48px;
+    }
+
+    .movie-item-row .custom-col- {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .contact-form {
+        padding: 30px 30px 40px;
+    }
+
+    .contact-info-wrap {
+        padding: 40px 34px 60px;
+    }
+
+    .blog-post-content .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .blog-sidebar {
+        margin-top: 120px;
+    }
+
+    .rc-post-item .content .title {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .rc-post-item .thumb {
+        flex: 0 0 100px;
+        width: 100px;
+        margin-right: 20px;
+    }
+
+    .blog-widget {
+        padding: 40px 30px;
+    }
+
+    .movie-details-content h2 {
+        font-size: 46px;
+    }
+
+    .movie-details-prime ul li.watch {
+        margin-left: auto;
+    }
+
+    .episode-watch-wrap .card-body ul li a {
+        font-size: 14px;
+        display: inline-block;
+    }
+
+    .episode-watch-wrap .card-body ul li .duration {
+        float: right;
+        display: inline-block;
+        margin-top: 0;
+        margin-left: 0;
+    }
+
+    .movie-details-content h5 {
+        font-size: 22px;
+    }
+
+    .comment-avatar-info h5 {
+        font-size: 18px;
+    }
+
+}
+
+

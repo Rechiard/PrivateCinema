@@ -1,0 +1,29 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: private-cinema
+  datasource:
+    url: jdbc:mysql://localhost:3306/private_movie?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-value: 2
+      logic-not-delete-value: 1
+      logic-delete-field: "status"
+      id-type: auto
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.tjnu.system.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    aggressive-lazy-loading: false
+    lazy-loading-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+

@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>个人中心</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome-all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/flaticon.css}">
+    <link rel="stylesheet" th:href="@{/css/odometer.css}">
+    <link rel="stylesheet" th:href="@{/css/aos.css}">
+    <link rel="stylesheet" th:href="@{/css/slick.css}">
+    <link rel="stylesheet" th:href="@{/css/default.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+</head>
+<body>
+
+<div th:replace="system/common/commons.html::topBar"></div>
+
+
+<!-- main-area -->
+<main>
+
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2 class="title">个人中心</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">个人中心</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+    <!-- contact-area -->
+    <section class="contact-area contact-bg" data-background="img/bg/contact_bg.jpg">
+        <div class="contact-form-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-2 ht-menu" >
+                        <ul class="nav flex-column dashboard-list mb-20 role=" tablist>
+                            <li><a style="border: none;border-radius: 0px" class="btn" data-toggle="tab" href="#dashboard">个人中心</a></li>
+                            <li style="margin-top: 10px"><a style="border: none;border-radius: 0px" class="btn" data-toggle="tab" href="#account-details">信息详情</a></li>
+                            <li style="margin-top: 10px"><a style="border: none;border-radius: 0px" class="btn" data-toggle="tab" href="#my-appointment">我的预约</a></li>
+                            <li style="margin-top: 10px"><a style="border: none;border-radius: 0px" class="btn" data-toggle="tab" href="#change-password">修改密码</a></li>
+                            <li style="margin-top: 10px"><a style="border: none;border-radius: 0px" class="btn" th:href="@{/LoginOut}">退出登录</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-10">
+                        <!-- Tab panes -->
+                        <div class="tab-content dashboard-content mb-20">
+                            <div id="dashboard" class="tab-pane fade active show">
+                                <h3 class="last-title">个人中心 </h3>
+                                <p><span>欢迎您,[[${nickname}]]</span>用户。您可以轻松地查看个人中心，管理您的个人信息，并编辑您的密码和帐户详细信息。</p>
+                                <p>这是您的个人中心页面，在这里您可以看到您的一些内容和信息，方便你修改和编辑个人信息</p>
+                            </div> <!-- end of tab-pane -->
+                            <div id="account-details" class="tab-pane fade">
+                                <h3 class="last-title">编辑您的个人信息 </h3>
+                                <div class="contact-form">
+                                    <form class="login-form">
+                                        <input id="id" name="id" hidden th:value="${userInfo.getId()}">
+                                        <div class="form_group col-12">
+                                            <label class="form-label">注册时间<span>*</span></label>
+                                            <input class="input-form" id="registerDate" name="registerDate" readonly unselectable="on" type="text" th:value="${userInfo.getRegisterDate()}">
+                                        </div>
+
+                                        <div class="form_group col-12 ">
+                                            <label class="form-label">姓名 <span>*</span></label>
+                                            <input id="nickname" name="nickname" type="text" th:value="${userInfo.getNickname()}">
+                                        </div>
+
+                                        <div class="form_group col-12 ">
+                                            <label class="form-label">邮箱 <span>*</span></label>
+                                            <input id="email" name="email" t    ype="text" th:value="${userInfo.getEmail()}">
+                                        </div>
+
+                                        <div class="form_group col-12">
+                                            <label class="form-label">电话 <span>*</span></label>
+                                            <input minlength="11" maxlength="11" id="phone" name="phone" type="text" th:value="${userInfo.getPhone()}">
+                                        </div>
+                                        <div style="width:100%">
+                                            <button type="button" style="margin-left:400px;width:100%" class="btn" onclick="doSaveEntity()">保存</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="my-appointment" class="tab-pane">
+                                <h3 class="last-title">我的预约 </h3>
+                                <div class="layuimini-main">
+                                    <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+                                    <script type="text/html" id="currentTableBar">
+                                        <a lay-event="del" class="btn" style="border: none;border-radius: 0px">删除</a>
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- end of tab-pane -->
+                            <input hidden id="userId" name="userId" th:value="${userInfo.getId()}">
+                            <!-- end of tab-pane -->
+                            <div id="change-password" class="tab-pane">
+                                <h3 class="last-title">修改密码 </h3>
+                                <div class="contact-form">
+
+                                    <form class="login-form">
+                                        <input name="id" hidden th:value="${userInfo.getId()}">
+                                        <div class="form_group col-12">
+                                            <label class="form-label">旧密码 <span>*</span></label>
+                                            <input  class="input-form" id="oldPassword" name="oldPassword" type="password">
+                                        </div>
+                                        <div class="form_group col-12">
+                                            <label class="form-label">新密码 <span>*</span></label>
+                                            <input  class="input-form" id="newPassword1" name="newPassword1" type="password">
+                                        </div>
+                                        <div class="form_group col-12">
+                                            <label class="form-label">再次输入新密码 <span>*</span></label>
+                                            <input  class="input-form" id="newPassword2" name="newPassword2" type="password">
+                                        </div>
+                                        <div class="form-row mt-20" style="width:100%;">
+                                            <button type="button" style="margin-left:400px;width:100%" onclick="doUpdatePwd()" class="btn">修改</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                                <!-- end of tab-pane -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- contact-area-end -->
+
+
+    <!-- newsletter-area -->
+    <section class="newsletter-area newsletter-bg" data-background="img/bg/newsletter_bg.jpg">
+        <div class="container">
+            <div class="newsletter-inner-wrap">
+                <div class="row align-items-center">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- newsletter-area-end -->
+
+</main>
+<!-- main-area-end -->
+
+
+<div th:replace="system/common/commons.html::bottomBar"></div>
+
+</body>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/layer/layer.js}"></script>
+<script th:src="@{/layuimini/js/lay-module/xm-select/xm-select.js}"></script>
+<script th:src="@{/layuimini/lib/layui-v2.5.5/layui.js}" charset="utf-8"></script>
+<script th:src="@{/layuimini/js/lay-config.js?v=2.0.0}" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'table'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table;
+
+        table.render({
+            elem: '#currentTableId',
+            method: 'post',
+            where: {
+                "userId": $("#userId").val()
+            },
+            url: '/system/appointmentInfo/listByTable',
+            cols: [ [
+                {type: 'numbers',title: '序号'},
+                {field: 'movieName', title: '电影名'},
+                {field: 'roomName', title: '房间名'},
+                {field: 'roomNumber',title: '房间号'},
+                {field: 'roomPrice',title: '价格'},
+                {field: 'roomType',title: '房间类型'},
+                {field: 'startTime',title: '开始时间'},
+                {field: 'endTime',title: '结束时间'},
+                {
+                    field: 'process', title: '状态', align: 'center', width: 100, templet: function (d) {
+                        let sexArr = ['', '未开始', '正在进行中','已完成','已过期'];
+                        return sexArr[d.process];
+                    }
+                },
+                {title: '操作', width: 180,align:"center", toolbar: '#currentTableBar', align: "center"}
+            ]],
+
+        });
+
+        table.on('tool(currentTableFilter)',function (obj) {
+            let data = obj.data;
+            if(obj.event === 'del'){
+                layer.confirm('确定删除预约嘛?',function (index) {
+                    $.ajax({
+                        type: 'post',
+                        url: '/system/appointmentInfo/deleteById',
+                        data: {id: data.id},
+                        dataType: 'json',
+                        success: function (res) {
+                            if(res.code == 200){
+                                layer.msg(res.msg, {time: 500, icon: 1}, function () {
+                                    window.location.reload();
+                                });
+                            }
+                            else{
+                                layer.msg(res.msg, {time: 500, icon: 2});
+                            }
+                        },
+                        error: function (res){
+                            layer.msg('请求失败',{time: 500, icon: 2});
+                        }
+                    });
+                });
+            }
+        });
+
+    });
+
+    function doSaveEntity(){
+        layer.confirm("确定修改嘛？", {btn: ["确定", "取消"]},
+            function () {
+                g_showLoading();
+                $.ajax({
+                    url:"/system/userInfo/UpdateEntity",
+                    type:"POST",
+                    data:{
+                        id: $("#id").val(),
+                        nickname: $("#nickname").val(),
+                        email: $("#email").val(),
+                        phone: $("#phone").val(),
+                        registerDate: $("#registerDate").val()
+                    },
+                    success: function(data){
+                        if(data.code == 200){
+                            window.location.href = "/toMyAccount";
+                        }else{
+                            layer.msg(data.message);
+                        }
+                    },
+                    error: function(){
+                        layer.msg("修改失败");
+                    }
+                })
+            },
+            function () {
+                layer.close();
+            })
+    }
+
+    function doUpdatePwd(){
+        layer.confirm("确定修改嘛？", {btn: ["确定", "取消"]},
+            function () {
+                g_showLoading();
+                $.ajax({
+                    url:"/system/userInfo/updatePwd",
+                    type:"POST",
+                    data:{
+                        id: $("#id").val(),
+                        oldPassword: $("#oldPassword").val(),
+                        newPassword1: $("#newPassword1").val(),
+                        newPassword2: $("#newPassword2").val()
+                    },
+                    success: function(data){
+                        if(data.code == 200){
+                            layer.confirm("修改密码成功，请重新登录", {btn: ["确定"]},
+                                function (){
+                                    window.location.href ='/';
+                                })
+                        }else{
+                            layer.msg(data.msg);
+                        }
+                    },
+                    error: function(){
+                        layer.msg("修改失败");
+                    }
+                })
+            },
+            function () {
+                layer.close();
+            })
+    }
+
+</script>
+</html>

@@ -1,0 +1,69 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "toWelcome"
+  },
+  "logoInfo": {
+    "title": "XX私人影院后台",
+    "image": "layuimini/images/logo.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "首页",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "主页",
+          "href": "toWelcome",
+          "icon": "fa fa-home",
+          "target": "_self"
+        },
+        {
+          "title": "用户管理",
+          "href": "system/userInfo/init",
+          "icon": "fa fa-male",
+          "target": "_self"
+        },
+        {
+          "title": "电影管理",
+          "href": "system/movieInfo/init",
+          "icon": "fa fa-caret-square-o-right",
+          "target": "_self"
+        },
+        {
+          "title": "房间管理",
+          "href": "system/roomInfo/init",
+          "icon": "fa fa-building-o",
+          "target": "_self"
+        },
+        {
+          "title": "预约管理",
+          "href": "system/appointmentInfo/init",
+          "icon": "fa fa-phone",
+          "target": "_self"
+        },
+        {
+          "title": "用户反馈管理",
+          "href": "system/feedbackInfo/init",
+          "icon": "fa fa-envelope-o",
+          "target": "_self"
+        },
+        {
+          "title": "黑名单管理",
+          "href": "system/userInfo/initBlack",
+          "icon": "fa fa-ban",
+          "target": "_self"
+        },
+        {
+          "title": "成交订单管理",
+          "href": "system/appointmentInfo/initHistory",
+          "icon": "fa fa-ban",
+          "target": "_self"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>XX私人影院在线预定</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome-all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/flaticon.css}">
+    <link rel="stylesheet" th:href="@{/css/odometer.css}">
+    <link rel="stylesheet" th:href="@{/css/aos.css}">
+    <link rel="stylesheet" th:href="@{/css/slick.css}">
+    <link rel="stylesheet" th:href="@{/css/default.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+
+</head>
+<body>
+
+<div th:replace="system/common/commons.html::topBar"></div>
+
+
+<!-- main-area -->
+<main>
+
+    <!-- slider-area -->
+    <section class="slider-area slider-bg" data-background="img/banner/s_slider_bg.jpg">
+        <div class="slider-active">
+            <div class="slider-item">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 order-0 order-lg-2">
+                            <div class="slider-img text-center text-lg-right" data-animation="fadeInRight"
+                                 data-delay="1s">
+                                <img src="img/banner/slider_img01.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="banner-content">
+                                <h6 class="sub-title" data-animation="fadeInUp" data-delay=".2s">Movflx</h6>
+                                <h2 class="title" data-animation="fadeInUp" data-delay=".4s">私人
+                                    <span>影院</span>, 电影, & 更多.</h2>
+                                <div class="banner-meta" data-animation="fadeInUp" data-delay=".6s">
+                                    <ul>
+                                        <li class="quality">
+                                            <span>4 K</span>
+                                            <span>HD</span>
+                                        </li>
+                                        <li class="category">
+                                            <a href="#">Romance,</a>
+                                            <a href="#">Drama</a>
+                                        </li>
+                                        <li class="release-time">
+                                            <span><i class="far fa-calendar-alt"></i> 2021</span>
+                                            <span><i class="far fa-clock"></i> 128 min</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- slider-area-end -->
+
+    <!-- up-coming-movie-area -->
+    <section class="ucm-area ucm-bg2" data-background="img/bg/ucm_bg02.jpg">
+        <div class="container">
+            <div class="row align-items-end mb-55">
+                <div class="col-lg-6">
+                    <div class="section-title title-style-three text-center text-lg-left">
+                        <span class="sub-title">Current popular movies</span>
+                        <h2 class="title">当前热门的电影</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ucm-nav-wrap">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="tvShow-tab" data-toggle="tab" href="#tvShow" role="tab"
+                                   aria-controls="tvShow" aria-selected="true">电 影</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="tvShow"  aria-labelledby="tvShow-tab">
+                    <div class="ucm-active owl-carousel" >
+                        <div class="movie-item mb-50" th:each="movieInfo : ${topMovies}">
+                            <div class="movie-poster">
+                                <a th:href="@{/toMovieDetail(id=${movieInfo.getId()})}"><img th:src="${movieInfo.getMovieImg()}" alt=""></a>
+                            </div>
+                            <div class="movie-content">
+                                <div class="top">
+                                    <h5 class="title"><a th:href="@{/toMovieDetail(id=${movieInfo.getId()})}">[[${movieInfo.getMovieName()}]]</a></h5>
+                                    <span class="date">[[${movieInfo.getMovieYear()}]]</span>
+                                </div>
+                                <div class="bottom">
+                                    <ul>
+                                        <li><span class="quality">hd</span></li>
+                                        <li>
+                                            <span class="duration"><i class="far fa-clock"></i> [[${movieInfo.getMovieTime()}]] min</span>
+                                            <span class="rating"><i class="fas fa-thumbs-up"></i> [[${movieInfo.getMovieScore()}]]</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- up-coming-movie-area-end -->
+
+    <!-- gallery-area -->
+    <div class="gallery-area position-relative">
+        <div class="gallery-bg"></div>
+        <div class="container-fluid p-0 fix">
+            <div class="row gallery-active">
+                <div class="col-12">
+                    <div class="gallery-item">
+                        <img src="img/images/gallery_01.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="gallery-item">
+                        <img src="img/images/gallery_02.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="gallery-item">
+                        <img src="img/images/gallery_03.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="gallery-item">
+                        <img src="img/images/gallery_04.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider-nav"></div>
+    </div>
+    <!-- gallery-area-end -->
+
+    <!-- services-area -->
+    <section class="services-area services-bg-two" data-background="img/bg/services_bg02.jpg">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-6 order-0 order-lg-2">
+                    <div class="services-img-wrap">
+                        <img src="img/images/services_img02.jpg" alt="">
+                        <a href="img/images/services_img02.jpg" class="download-btn" download>Download <img
+                                src="fonts/download.svg" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-6">
+                    <div class="services-content-wrap">
+                        <div class="section-title mb-40">
+                            <span class="sub-title">支持智能手机播放</span>
+                            <h2 class="title">下载官方App观影</h2>
+                        </div>
+                        <div class="services-list">
+                            <ul>
+                                <li>
+                                    <div class="icon">
+                                        <i class="flaticon-television"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h5>电视机放映</h5>
+                                        <p>App支持电视机上投屏播放，随时随地切换您想看的电影或者其他</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="flaticon-video-camera"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h5>投影仪放映</h5>
+                                        <p>App支持大部分投影仪的投屏播放，随时随地切换您想看的电影或者其他</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- services-area-end -->
+
+
+</main>
+<!-- main-area-end -->
+
+
+<div th:replace="system/common/commons.html::bottomBar"></div>
+
+
+
+</body>
+</html>

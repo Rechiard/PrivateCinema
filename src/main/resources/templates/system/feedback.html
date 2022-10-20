@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>反馈与意见</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome-all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/flaticon.css}">
+    <link rel="stylesheet" th:href="@{/css/odometer.css}">
+    <link rel="stylesheet" th:href="@{/css/aos.css}">
+    <link rel="stylesheet" th:href="@{/css/slick.css}">
+    <link rel="stylesheet" th:href="@{/css/default.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+</head>
+<body>
+
+<div th:replace="system/common/commons.html::topBar"></div>
+
+
+<!-- main-area -->
+<main>
+
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2 class="title">反馈与意见</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">首页</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">反馈与意见</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+    <!-- contact-area -->
+    <section class="contact-area contact-bg" data-background="img/bg/contact_bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="contact-form-wrap">
+                        <div class="widget-title mb-50">
+                            <h5 class="title">反馈信</h5>
+                        </div>
+                        <div class="contact-form">
+
+                            <form class="layui-form layuimini-form" id="dataForm" lay-filter="dataFormFilter">
+                                <input class="layui-input" lay-verify="required" type="text" name="feedbackType" placeholder="请输入问题类型 *">
+                                <textarea class="layui-input" lay-verify="required" name="feedbackDescription" placeholder="请描述你的问题..."></textarea>
+                                <button type="submit" lay-submit lay-filter="dataFormSubmit" class="btn">投递</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="widget-title mb-50">
+                        <h5 class="title">投诉电话</h5>
+                    </div>
+                    <div class="contact-info-wrap">
+                        <p><span>Find solutions :</span>解决常见问题，或从支持代理行业标准获得帮助。</p>
+                        <div class="contact-info-list">
+                            <ul>
+                                <li>
+                                    <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                                    <p><span>地址 :</span> 天津师范大学</p>
+                                </li>
+                                <li>
+                                    <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                                    <p><span>电话 :</span> (+86) 123 854 365</p>
+                                </li>
+                                <li>
+                                    <div class="icon"><i class="fas fa-envelope"></i></div>
+                                    <p><span>邮箱 :</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                               data-cfemail="384b4d4848574a4c7855574e5e5440165b5755">616316004@qq.com</a>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact-area-end -->
+
+
+    <!-- newsletter-area -->
+    <section class="newsletter-area newsletter-bg" data-background="img/bg/newsletter_bg.jpg">
+        <div class="container">
+            <div class="newsletter-inner-wrap">
+                <div class="row align-items-center">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- newsletter-area-end -->
+
+</main>
+<!-- main-area-end -->
+
+
+<div th:replace="system/common/commons.html::bottomBar"></div>
+<script th:src="@{/layuimini/js/lay-module/xm-select/xm-select.js}"></script>
+<script th:src="@{/layuimini/lib/layui-v2.5.5/layui.js}" charset="utf-8"></script>
+<script th:src="@{/layuimini/js/lay-config.js?v=2.0.0}" charset="utf-8"></script>
+
+</body>
+
+<script>
+    layui.use(['form', 'table'], function () {
+        var $ = layui.jquery,
+            form = layui.form
+
+        form.on('submit(dataFormSubmit)', function (data) {
+            $.ajax({
+                type: 'post',
+                url: 'system/feedbackInfo/save',
+                dataType: 'json',
+                data: data.field,
+                success: function (res) {
+                    if(res.code == 200){
+                        layer.msg(res.msg, {time: 1000, icon: 1}, function () {
+                            window.location.reload();
+                        });
+                    }else{
+                        layer.msg(res.msg, {time: 1000, icon: 2});
+                    }
+                },
+                error: function (res){
+                    layer.msg('请求失败',{time: 1000, icon: 2});
+                }
+            });
+            return false;
+        });
+
+    });
+</script>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Movflx - Online Movies & TV Shows Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome-all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/flaticon.css}">
+    <link rel="stylesheet" th:href="@{/css/odometer.css}">
+    <link rel="stylesheet" th:href="@{/css/aos.css}">
+    <link rel="stylesheet" th:href="@{/css/slick.css}">
+    <link rel="stylesheet" th:href="@{/css/default.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <link rel="stylesheet" th:href="@{/layuimini/lib/layui-v2.5.5/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/layuimini/css/public.css}" media="all">
+    <link rel="stylesheet" th:href="@{/layuimini/js/lay-module/dtree/dtree.css}">
+    <link rel="stylesheet" th:href="@{/layuimini/js/lay-module/dtree/font/dtreefont.css}">
+</head>
+<body>
+
+<div th:replace="system/common/commons.html::topBar"></div>
+
+
+<!-- main-area -->
+<main>
+
+    <!-- movie-details-area -->
+    <section class="movie-details-area" data-background="img/bg/movie_details_bg.jpg">
+        <div class="container">
+            <div class="row align-items-center position-relative">
+                <div class="col-xl-3 col-lg-4">
+                    <div class="movie-details-img">
+                        <img th:src="${movieInfo.getMovieImg()}">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8">
+                    <div class="movie-details-content">
+                        <h2>[[${movieInfo.getMovieName()}]]</h2>
+                        <div class="banner-meta">
+                            <ul>
+                                <li class="quality">
+                                    <span>4K</span>
+                                    <span>HD</span>
+                                </li>
+                                <li class="category">
+                                    <a href="#">[[${movieInfo.getMovieAuthor()}]]</a>
+                                </li>
+                                <li class="release-time">
+                                    <span><i class="far fa-calendar-alt"></i> [[${movieInfo.getMovieYear()}]]</span>
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                        <p>[[${movieInfo.getMovieDescription()}]]</p>
+                        <div class="movie-details-prime">
+                            <ul>
+                                <li class="share"><span><i class="far fa-clock"></i> [[${movieInfo.getMovieTime()}]] min</span></li>
+                                <li class="streaming">
+                                    <h6>点击在线预定房间</h6>
+                                    <span>请预定房间和时间段</span>
+                                </li>
+                                <li class="watch">
+                                    <button id="addAppointmentWindow" class="btn" type="button" ><i class="fas fa-play"></i>预定</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="padding: 180px 70px;">
+					<h2 style="margin-top: -155px;"><i class="fas fa-thumbs-up"></i> 评分 <span style="color: #8FD19E;">[[${movieInfo.getMovieScore()}]]</span></h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- movie-details-area-end -->
+
+
+
+    <!-- tv-series-area -->
+    <section class="tv-series-area tv-series-bg" data-background="img/bg/tv_series_bg02.jpg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title text-center mb-50">
+                        <h2 class="title">类似 <span style="color: yellowgreen;">|</span> 影片</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center" >
+                <div class="col-xl-3 col-lg-4 col-sm-6" th:each="movie : ${similarMovies}">
+                    <div class="movie-item mb-50" >
+                        <div class="movie-poster">
+                            <a th:href="@{/toMovieDetail(id=${movie.getId()})}"><img th:src="${movie.getMovieImg()}" alt=""></a>
+                        </div>
+                        <div class="movie-content">
+                            <div class="top">
+                                <h5 class="title"><a href="movie-details.html">[[${movie.getMovieName()}]]</a></h5>
+                                <span class="date">[[${movie.getMovieYear()}]]</span>
+                            </div>
+                            <div class="bottom">
+                                <ul>
+                                    <li><span class="quality">hd</span></li>
+                                    <li>
+                                        <span class="duration"><i class="far fa-clock"></i> [[${movie.getMovieTime()}]] min</span>
+                                        <span class="rating"><i class="fas fa-thumbs-up"></i> [[${movie.getMovieScore()}]]</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- tv-series-area-end -->
+
+    <!-- newsletter-area -->
+    <section class="newsletter-area newsletter-bg" data-background="img/bg/newsletter_bg.jpg">
+        <div class="container">
+            <div class="newsletter-inner-wrap">
+            </div>
+        </div>
+    </section>
+    <!-- newsletter-area-end -->
+
+</main>
+<!-- main-area-end -->
+
+<div id="dataFormModal" style="display: none;padding: 10px">
+    <form class="layui-form layuimini-form" id="dataForm" lay-filter="dataFormFilter">
+
+        <input type="hidden" name="id">
+        <input th:if="${userInfo != null}" hidden name="userId" th:value="${userInfo.getId()}">
+        <input hidden name="movieId" th:value="${movieInfo.getId()}">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">时间段：</label>
+            <div class="layui-input-block">
+                <select lay-verify="required" name="createTime" lay-filter="time">
+                    <option value="">（仅限当日预约）</option>
+                    <option value="1">8:00-10:00</option>
+                    <option value="2">10:00-12:00</option>
+                    <option value="3">12:00-14:00</option>
+                    <option value="4">14:00-16:00</option>
+                    <option value="5">16:00-18:00</option>
+                    <option value="6">18:00-20:00</option>
+                    <option value="7">20:00-22:00</option>
+                    <option value="8">22:00-00:00</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">请选择房间</label>
+            <div class="layui-input-block">
+                    <input lay-verify="required" th:each="room : ${roomList}" type="radio" name="roomId" th:value="${room.getId()}" th:title="${room.getRoomName()}+'('+${room.getRoomNumber()} + '房间,' + ${room.getRoomType()} + ')'">
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label required">价格提醒</label>
+            <div class="layui-input-block">
+                <p>经济小包间：200元</p>
+                <p>浪漫中包间：400元</p>
+                <p>豪华大包间：600元</p>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="submit" class="layui-btn layui-btn-normal" lay-submit lay-filter="dataFormSubmit">确定预约</button>
+                <button type="button" class="layui-btn layui-btn-primary" id="dataFormReset">取消</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div th:replace="system/common/commons.html::bottomBar"></div>
+
+<script th:src="@{/layuimini/js/lay-module/xm-select/xm-select.js}"></script>
+<script th:src="@{/layuimini/lib/layui-v2.5.5/layui.js}" charset="utf-8"></script>
+<script th:src="@{/layuimini/js/lay-config.js?v=2.0.0}" charset="utf-8"></script>
+</body>
+<script>
+    layui.use(['form'], function () {
+        var $ = layui.jquery,
+            form = layui.form;
+
+        $("#addAppointmentWindow").on('click',function(){
+            layer.open({
+                title: '预约订单'
+                , type: 1
+                , content: $('#dataFormModal')
+                , area: ['1450px', '380px']
+                , maxmin: true
+                , cancel: function () {
+                    $('#dataForm')[0].reset();
+                    layer.closeAll();
+                }
+            });
+        });
+
+        // 监听 add表单 关闭
+        $('#dataFormReset').on('click', function () {
+            $('#dataForm')[0].reset();
+            layer.closeAll();
+        });
+
+        form.on('submit(dataFormSubmit)', function (data) {
+            $.ajax({
+                type: 'post',
+                url: 'system/appointmentInfo/saveAppointment',
+                dataType: 'json',
+                data: data.field,
+                success: function (res) {
+                    if (res.code == 200) {
+                        layer.msg(res.msg, {time: 1000, icon: 1}, function () {
+                            window.location.reload();
+                        });
+                    } else {
+                        layer.msg(res.msg, {time: 2000, icon: 2});
+                    }
+                },
+                error: function (res) {
+                    layer.msg("请求失败", {time: 1000, icon: 2});
+                }
+            });
+            return false;
+        });
+
+    })
+
+</script>
+</html>

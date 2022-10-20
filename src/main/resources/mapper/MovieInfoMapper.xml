@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tjnu.system.mapper.MovieInfoMapper">
+
+    <select id="countByTable" resultType="java.lang.Integer">
+        select count(A.id) from movie_info A where A.status = 1
+    </select>
+
+    <select id="listByTable" resultType="com.tjnu.system.entity.MovieInfo">
+        select <include refid="MovieInfoVo"/>
+        from movie_info A
+        where A.status = 1
+        limit #{entity.offset}, #{entity.limit}
+    </select>
+
+    <select id="listByTable" resultType="com.tjnu.system.entity.MovieInfo">
+        select <include refid="MovieInfoVo"/>
+        from movie_info A
+        where A.status = 1
+        limit #{entity.offset}, #{entity.limit}
+    </select>
+
+    <select id="listFourByType" resultType="com.tjnu.system.entity.MovieInfo">
+        select <include refid="MovieInfoVo"/>
+        from movie_info A
+        where A.status = 1 and A.movie_type = #{movieType} and A.id != #{id}
+        limit 4
+    </select>
+
+    <select id="listByScore" resultType="com.tjnu.system.entity.MovieInfo">
+        select <include refid="MovieInfoVo"/>
+        from movie_info A
+        where A.status = 1
+        order by A.movie_score desc
+        limit 10
+    </select>
+
+    <select id="TotalMovies" resultType="java.lang.Integer">
+        select count(A.id)
+        from movie_info A
+        where A.status = 1
+    </select>
+
+    <sql id="MovieInfoVo">
+        A.id,
+        A.movie_name,
+        A.movie_description,
+        A.movie_region,
+        A.movie_type,
+        A.movie_score,
+        A.movie_author,
+        A.movie_time,
+        A.movie_year,
+        A.movie_img
+    </sql>
+
+
+</mapper>

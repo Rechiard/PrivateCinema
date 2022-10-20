@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>电影列表</title>
+    <meta name="description" content="">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome-all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/flaticon.css}">
+    <link rel="stylesheet" th:href="@{/css/odometer.css}">
+    <link rel="stylesheet" th:href="@{/css/aos.css}">
+    <link rel="stylesheet" th:href="@{/css/slick.css}">
+    <link rel="stylesheet" th:href="@{/css/default.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+</head>
+<body>
+
+<div th:replace="system/common/commons.html::topBar"></div>
+
+
+<!-- main-area -->
+<main>
+
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb-area breadcrumb-bg" data-background="img/bg/breadcrumb_bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2 class="title">电影 <span>类型</span></h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index-2.html">首页</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">电影类型</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+
+    <!-- movie-area -->
+    <section class="movie-area movie-bg" data-background="img/bg/movie_bg.jpg">
+        <div class="container">
+            <div class="row movie-content">
+				<div class="col-6 tr-movie-menu-active" style="padding-right: 255px;">
+					<h6 class="title">排序：
+					<button class="active">综合</button>
+					<button>评分</button>
+					<button>最新更新时间</button>
+					</h6>
+				</div>
+            </div>
+			<div class="row movie-content">
+				<div class="col-12 tr-movie-menu-active" style="padding-right: 367px;">
+					<h6 class="title">地区：
+					<button class="active">全部</button>
+					<button onclick="">华语</button>
+					<button>美国</button>
+					<button>欧洲</button>
+					<button>韩国</button>
+					<button>日本</button>
+					<button>泰国</button>
+					<button>香港地区</button>
+					<button>印度</button>
+					</h6>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 tr-movie-menu-active" style="padding-right: 115px;">
+					<h6 class="title">类型：
+					<button class="active">全部</button>
+					<button>爱情</button>
+					<button>战争</button>
+					<button>喜剧</button>
+					<button>科幻</button>
+					<button>恐怖</button>
+					<button>动作</button>
+					<button>动画</button>
+					<button>惊悚</button>
+					<button>魔幻</button>
+					<button>青春</button>
+					<button>犯罪</button>
+					
+					</h6>
+				</div>
+			</div>
+			
+			<div class="row mb-20">
+				<div class="col-12 tr-movie-menu-active" style="padding-right: 90px;">
+					<h6 class="title">年份：
+					<button class="active">全部</button>
+					<button>2021</button>
+					<button>2020</button>
+					<button>2019</button>
+					<button>2018</button>
+					<button>2017</button>
+					<button>2016</button>
+					<button>2015-2011</button>
+					<button>2010-2000</button>
+					<button>90年代</button>
+					<button onclick="checkYear()">80年代</button>
+					</h6>
+				</div>
+			</div>
+
+            <div class="shop-product-wrap grid gridview-3 row">
+                <div class="col-xl-3 col-lg-4 col-sm-6" th:each="movieInfo : ${moviesInfo}">
+
+                    <div class="movie-item movie-item-three mb-50" style="width: 261px;">
+                        <div class="movie-poster">
+                            <img th:src="${movieInfo.getMovieImg()}" alt="">
+                            <ul class="overlay-btn">
+                                <li hidden></li>
+                                <li><a th:href="@{/toMovieDetail(id=${movieInfo.getId()})}" class="btn">预 约</a></li>
+                                <li><a th:href="@{/toMovieDetail(id=${movieInfo.getId()})}" class="btn">详 情</a></li>
+                            </ul>
+                        </div>
+                            <div class="movie-content">
+                                <div class="top">
+                                    <h5 class="title"><a th:href="@{/toMovieDetail(id=${movieInfo.getId()})}">[[${movieInfo.getMovieName()}]]</a></h5>
+                                    <span class="date">[[${movieInfo.getMovieYear()}]]</span>
+                                </div>
+                                <div class="bottom">
+                                    <ul>
+                                        <li><span class="quality">hd</span></li>
+                                        <li>
+                                            <span class="duration"><i class="far fa-clock"></i> [[${movieInfo.getMovieTime()}]] min</span>
+                                            <span class="rating"><i class="fas fa-thumbs-up"></i> [[${movieInfo.getMovieScore()}]]</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+<!--            <div class="row">
+                <div class="col-12">
+                    <div class="pagination-wrap mt-30">
+                        <nav>
+                            <ul>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>-->
+            </div>
+
+
+        </div>
+    </section>
+    <!-- movie-area-end -->
+
+    <!-- newsletter-area -->
+    <section class="newsletter-area newsletter-bg" data-background="img/bg/newsletter_bg.jpg">
+        <div class="container">
+            <div class="newsletter-inner-wrap">
+                <div class="row align-items-center">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- newsletter-area-end -->
+
+</main>
+<!-- main-area-end -->
+
+
+<div th:replace="system/common/commons.html::bottomBar"></div>
+
+
+</body>
+</html>
